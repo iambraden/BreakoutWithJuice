@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
@@ -41,8 +42,21 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         if(currentBrickCount == 0){
             AudioManager.Instance.resetVolume();
             AudioManager.Instance.resetPitch();
-            SceneHandler.Instance.LoadNextScene();
+            StartCoroutine(yippeeAfterDelay(2));
+            StartCoroutine(LoadNextSceneAfterDelay(2));
         } 
+    }
+
+    private IEnumerator yippeeAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        AudioManager.Instance.PlaySFX("Yippee");
+    }
+
+    private IEnumerator LoadNextSceneAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneHandler.Instance.LoadNextScene();
     }
 
     public void KillBall()
