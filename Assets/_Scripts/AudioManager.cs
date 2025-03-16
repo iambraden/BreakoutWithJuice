@@ -3,14 +3,15 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    public float setPitch;
 
     private void Awake(){
-        if(instance == null){
-            instance = this;
+        if(Instance == null){
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }else{
             Destroy(gameObject);
@@ -18,7 +19,12 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Start(){
+        setPitch = 2.0f;
+        sfxSource.pitch = setPitch;
+        sfxSource.volume = 0.4f;
+        musicSource.volume = 0.6f;
         playMusic("Music");
+
     }
         
 
@@ -39,8 +45,25 @@ public class AudioManager : MonoBehaviour
         if(s == null){
             Debug.LogWarning("Sound: " + name + " not found!");
         }else{
+            sfxSource.pitch = setPitch;
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+    
+    public void decreasePitch(){
+        setPitch -= 0.15f;
+    }
+
+    public void resetPitch(){
+        setPitch = 2.0f;
+    }
+
+    public void lastHit(){
+        sfxSource.volume = 1.0f;
+    }
+
+    public void resetVolume(){
+        sfxSource.volume = 0.6f;
     }
 
 }

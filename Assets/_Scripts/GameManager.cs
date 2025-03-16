@@ -29,12 +29,20 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void OnBrickDestroyed(Vector3 position)
     {
-        // fire audio here
+        if(currentBrickCount == 1){
+            AudioManager.Instance.lastHit();
+        }
+        AudioManager.Instance.PlaySFX("Vine");
+        AudioManager.Instance.decreasePitch();
         // implement particle effect here
         // add camera shake here
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if(currentBrickCount == 0){
+            AudioManager.Instance.resetVolume();
+            AudioManager.Instance.resetPitch();
+            SceneHandler.Instance.LoadNextScene();
+        } 
     }
 
     public void KillBall()
