@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Start(){
+    private void Start(){ //default values and music starter
         setPitch = 2.0f;
         sfxSource.pitch = setPitch;
         sfxSource.volume = 0.4f;
@@ -45,11 +45,12 @@ public class AudioManager : MonoBehaviour
         if(s == null){
             Debug.LogWarning("Sound: " + name + " not found!");
         }else{
-            sfxSource.pitch = setPitch;
+            sfxSource.pitch = setPitch; //checks pitch before every play of sfx
             sfxSource.PlayOneShot(s.clip);
         }
     }
     
+    //getters, setters, shortcuts
     public void decreasePitch(){
         setPitch -= 0.15f;
     }

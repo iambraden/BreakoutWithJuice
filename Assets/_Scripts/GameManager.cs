@@ -31,9 +31,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void OnBrickDestroyed(Vector3 position)
     {
         if(currentBrickCount == 1){
-            AudioManager.Instance.lastHit();
+            AudioManager.Instance.lastHit(); //Increase volume if its the last brick
         }
-        AudioManager.Instance.PlaySFX("Vine");
+        AudioManager.Instance.PlaySFX("Vine");//play sound on brick break
         AudioManager.Instance.decreasePitch();
         // implement particle effect here
         // add camera shake here
@@ -42,8 +42,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         if(currentBrickCount == 0){
             AudioManager.Instance.resetVolume();
             AudioManager.Instance.resetPitch();
-            StartCoroutine(yippeeAfterDelay(1));
-            StartCoroutine(LoadNextSceneAfterDelay(2));
+            StartCoroutine(yippeeAfterDelay(1)); //ensures delay so sounds aren't playing over eachother
+            StartCoroutine(LoadNextSceneAfterDelay(2)); //ensure all sound gets to play before level change
         } 
     }
 
@@ -67,7 +67,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         maxLives--;
         float temp = AudioManager.Instance.getPitch();
         AudioManager.Instance.setPitch = 1.0f;
-        AudioManager.Instance.PlaySFX("Kaboom");
+        AudioManager.Instance.PlaySFX("Kaboom"); //Death sound
         AudioManager.Instance.setPitch = temp;
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
