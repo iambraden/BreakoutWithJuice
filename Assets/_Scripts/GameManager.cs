@@ -10,7 +10,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private int totalBrickCount;
 
     public float screenShakeDuration = 0.5f;
-    public float screenShakeStrength = 2f;
+    public float screenShakeStrength = 1f;
 
     private void OnEnable()
     {
@@ -38,7 +38,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         CameraShake.Shake(screenShakeDuration, screenShakeStrength);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if (currentBrickCount == 1)
+        {
+            screenShakeDuration = 1.0f;
+            screenShakeStrength = 5.0f;
+        }
+        if (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
 
     public void KillBall()
