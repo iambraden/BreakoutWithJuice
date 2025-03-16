@@ -9,6 +9,9 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private int currentBrickCount;
     private int totalBrickCount;
 
+    public float screenShakeDuration = 0.5f;
+    public float screenShakeStrength = 1f;
+
     private void OnEnable()
     {
         InputHandler.Instance.OnFire.AddListener(FireBall);
@@ -32,9 +35,15 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         // fire audio here
         // implement particle effect here
         // add camera shake here
+        CameraShake.Shake(screenShakeDuration, screenShakeStrength);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-        if(currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
+        if (currentBrickCount == 1)
+        {
+            screenShakeDuration = 1.0f;
+            screenShakeStrength = 5.0f;
+        }
+        if (currentBrickCount == 0) SceneHandler.Instance.LoadNextScene();
     }
 
     public void KillBall()
