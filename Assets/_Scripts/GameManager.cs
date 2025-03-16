@@ -42,7 +42,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         if(currentBrickCount == 0){
             AudioManager.Instance.resetVolume();
             AudioManager.Instance.resetPitch();
-            StartCoroutine(yippeeAfterDelay(2));
+            StartCoroutine(yippeeAfterDelay(1));
             StartCoroutine(LoadNextSceneAfterDelay(2));
         } 
     }
@@ -50,7 +50,10 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     private IEnumerator yippeeAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        float temp = AudioManager.Instance.getPitch();
+        AudioManager.Instance.setPitch = 1.0f;
         AudioManager.Instance.PlaySFX("Yippee");
+        AudioManager.Instance.setPitch = temp;
     }
 
     private IEnumerator LoadNextSceneAfterDelay(float delay)
@@ -62,6 +65,10 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     public void KillBall()
     {
         maxLives--;
+        float temp = AudioManager.Instance.getPitch();
+        AudioManager.Instance.setPitch = 1.0f;
+        AudioManager.Instance.PlaySFX("Kaboom");
+        AudioManager.Instance.setPitch = temp;
         // update lives on HUD here
         // game over UI if maxLives < 0, then exit to main menu after delay
         ball.ResetBall();

@@ -54,6 +54,10 @@ public class AudioManager : MonoBehaviour
         setPitch -= 0.15f;
     }
 
+    public float getPitch(){
+        return setPitch;
+    }
+
     public void resetPitch(){
         setPitch = 2.0f;
     }
