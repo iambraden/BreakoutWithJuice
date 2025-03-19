@@ -7,6 +7,8 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     [SerializeField] private Ball ball;
     [SerializeField] private Transform bricksContainer;
 
+    [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private GameObject bigParticlePrefab;
     private int currentBrickCount;
     private int totalBrickCount;
 
@@ -33,22 +35,23 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void OnBrickDestroyed(Vector3 position)
     {
-        if(currentBrickCount == 1){
-            AudioManager.Instance.lastHit(); //Increase volume if its the last brick
-            screenShakeDuration = 1.0f;
-            screenShakeStrength = 5.0f;
-        }
-        
-        AudioManager.Instance.PlaySFX("Vine");//play sound on brick break
+        // fire audio here
+		AudioManager.Instance.PlaySFX("Vine");//play sound on brick break
         AudioManager.Instance.decreasePitch();
-        
         // implement particle effect here
+        Instantiate(particlePrefab, position, Quaternion.identity);
         // add camera shake here
-        
+
         CameraShake.Shake(screenShakeDuration, screenShakeStrength);
         currentBrickCount--;
         Debug.Log($"Destroyed Brick at {position}, {currentBrickCount}/{totalBrickCount} remaining");
-
+        if (currentBrickCount == 1)
+        {
+            Instantiate(bigParticlePrefab,position, Quaternion.identity);
+			AudioManager.Instance.lastHit(); //Increase volume if its the last brick
+            screenShakeDuration = 1.0f;
+            screenShakeStrength = 5.0f;
+        }
         if(currentBrickCount == 0){
             AudioManager.Instance.resetVolume();
             AudioManager.Instance.resetPitch();

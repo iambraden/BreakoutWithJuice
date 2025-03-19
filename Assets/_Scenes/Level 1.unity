@@ -591,6 +591,8 @@ MonoBehaviour:
   maxLives: 3
   ball: {fileID: 2054714181}
   bricksContainer: {fileID: 1170594424}
+  particlePrefab: {fileID: 2946933008171186547, guid: c12f3f10dd3e75142a82ad68e1c6b4d5, type: 3}
+  bigParticlePrefab: {fileID: 7530948864412015457, guid: e48296b7e9463cc498902475242c3f06, type: 3}
   screenShakeDuration: 0.2
   screenShakeStrength: 1
 --- !u!1001 &443665624
