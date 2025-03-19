@@ -329,8 +329,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003730454}
   m_CullTransparentMesh: 1
+--- !u!1001 &1092622385
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 329087945995633303, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682141092341154142, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682141092341154142, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: sfxSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3fcd6a90cbd06334faf3c83352023004, type: 3}
+    - target: {fileID: 3682141092341154142, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: sfxSounds.Array.data[2].clipName
+      value: Kaboom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561816256781689103, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8480493343824477038, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ba8807db9e78d478764d93c8d4fcfc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 681802684}
+  - {fileID: 1092622385}
